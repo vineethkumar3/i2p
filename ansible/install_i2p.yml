@@ -1,0 +1,14 @@
+---
+- name: Install I2P
+  hosts: ec2-instances
+  become: true
+  tasks:
+    - name: Get repository
+      shell: echo | sudo apt-add-repository ppa:i2p-maintainers/i2p -y
+      become_user: root
+    - name: update
+      shell: echo | sudo apt-get update -y
+      become_user: root
+    - name: Install I2P
+      shell: echo | sudo apt-get install i2p -y
+      become_user: root

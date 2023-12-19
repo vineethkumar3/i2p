@@ -1,0 +1,17 @@
+- name: Install Java on EC2 instance
+  hosts: ec2-instances
+  become: yes
+
+  tasks:
+    - name: Update apt package cache (for Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == 'Debian'
+
+    - name: Install Java
+      become: yes
+      apt:
+        name: openjdk-8-jdk  # Adjust the package name based on your requirements
+        state: present
+        update_cache: yes
+      when: ansible_os_family == 'Debian'

@@ -1,0 +1,19 @@
+---
+- name: Install Python Packages
+  hosts: ec2-instances
+  become: true
+  tasks:
+    - name: Install pip
+      become_user: root
+      package:
+        name: python3-pip  # Use 'python-pip' if you are using Python 2
+        state: present
+
+    - name: Install beautifulsoup4 and json
+      pip:
+        name:
+          - beautifulsoup4
+          - boto3
+          - requests
+        state: present
+

@@ -1,0 +1,12 @@
+---
+- name: Execute CLI Command
+  hosts: ec2-instances
+  become: true
+  tasks:
+    - name: Download script fromthe S3 bucket
+      shell: aws s3 sync s3://i2p/script ./script
+      become_user: ubuntu
+
+    - name: Run CLI Command
+      shell: "python3 /home/ubuntu/script/exploratoryTable.py"
+      become_user: ubuntu

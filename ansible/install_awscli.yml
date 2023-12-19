@@ -1,0 +1,23 @@
+---
+- name: Install AWS CLI and configure
+  hosts: ec2-instances
+  become: yes
+
+  tasks:
+    - name: Install AWS CLI
+      apt:
+        name: awscli
+        state: present
+
+    - name: Configure AWS CLI
+      command: "aws configure set aws_access_key_id AKIA5VYWRSLUMLNHBNWI"
+      become_user: ubuntu
+
+    - name: Configure AWS CLI
+      command: "aws configure set aws_secret_access_key rYfA6lvcLXIZMI+/JAPz/5G00czGzu/Yc/6s0fWl"
+      become_user: ubuntu
+
+    - name: Configure AWS CLI
+      command: "aws configure set region us-east-1"
+      become_user: ubuntu
+

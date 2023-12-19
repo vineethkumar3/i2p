@@ -1,0 +1,9 @@
+---
+- name: Execute CLI Command
+  hosts: ec2-instances
+  become: true
+  tasks:
+    - name: Run CLI Command
+      shell: "/home/ubuntu/i2p/i2prouter start"
+      become_user: ubuntu
+
