@@ -1,0 +1,14 @@
+- name: Create User
+  hosts: kaliLinux
+  become: true
+  tasks:
+    - name: Create User
+      user:
+        name: Vineeth
+        state: present
+        append: yes
+    - name: Set Password
+      user:
+        name: vineeth
+        password: "1234"
+        update_password: always

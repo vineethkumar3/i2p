@@ -1,0 +1,36 @@
+- name: Install I2p
+  hosts: kaliLinux
+  become: true
+  tasks:
+    - name: Update the Repository
+      command: echo | sudo apt-get update
+
+    - name: Get Keys
+      shell: echo | echo "deb [signed-by=/usr/share/keyrings/i2p-archive-keyring.gpg] https://deb.i2p.net/ $(dpkg --status tzdata | grep Provides | cut -f2 -d'-') main" \
+  | sudo tee /etc/apt/sources.list.d/i2p.list
+      become_user: root
+
+    - name: Download Keys
+      shell: echo | curl -o i2p-archive-keyring.gpg https://geti2p.net/_static/i2p-archive-keyring.gpg
+      become_user: root
+
+    - name: Display fingerprint
+      shell: echo | gpg --keyid-format long --import --import-options show-only --with-fingerprint i2p-archive-keyring.gpg
+      become_user: root
+
+    - name: Copy the KeyRing
+      shell: echo | sudo cp i2p-archive-keyring.gpg /usr/share/keyrings
+      become_user: root
+
+    - name: Update package
+      command: echo | sudo apt update
+
+    - name: Fix the broken
+      command: sudo apt --fix-broken install -y
+
+    - name: Install i2p
+      command: echo | sudo apt install i2p -y
+
+    - name: Start I2p
+      command: i2prouter start
+      become_user: vineeth
