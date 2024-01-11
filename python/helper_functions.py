@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+import os
 class functions:
 
     def read_html(self, filePath):
@@ -24,5 +25,6 @@ class functions:
         return soup
 
     def write_json_file(self,data,filename,path):
+        os.makedirs(path, exists_ok=True)
         with open(f"{path}/{filename}", 'w') as file:
             json.dump(data,file,indent=2)
