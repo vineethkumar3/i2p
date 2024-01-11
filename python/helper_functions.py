@@ -25,6 +25,6 @@ class functions:
         return soup
 
     def write_json_file(self,data,filename,path):
-        os.makedirs(path, exists_ok=True)
+        os.makedirs(path, exist_ok=True)
         with open(f"{path}/{filename}", 'w') as file:
             json.dump(data,file,indent=2)
