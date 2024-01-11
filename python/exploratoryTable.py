@@ -116,5 +116,5 @@ if __name__=="__main__":
     obj_own=own_routerinfo()
     id=obj_own.routerId()
     finalData={id:tableData}
-    helper_obj.write_json_file(finalData,"data.json",".")
+    helper_obj.write_json_file(finalData,f"{id}_data.json",".")
     #object.upload_to_S3()
