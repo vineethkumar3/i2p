@@ -1,4 +1,4 @@
-import json
+\import json
 import subprocess
 
 import boto3
@@ -97,7 +97,7 @@ class router_info:
             s3 = boto3.client('s3')
 
             bucket_name = 'i2p'
-            file_path = '/home/ubuntu/script/data.json'
+            file_path = './data.json'
             s3_key = f'results/{date}/{own_routerId}/data.json'
 
             # Upload the file
