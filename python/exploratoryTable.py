@@ -19,7 +19,7 @@ class router_info:
 
     def read_table(self,url):
         soup=functions().get_table_htmlfile(url)
-        tables = soup.find(class_="tunneldisplay tunnels_client")
+        tables = soup.find_all('table',class_="tunneldisplay tunnels_client")
         router_id={}
         combined_data = {
             "exploratory_Tunnel": {},
