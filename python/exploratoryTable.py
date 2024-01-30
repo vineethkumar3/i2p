@@ -52,7 +52,9 @@ class router_info:
 
                     if local_router:
                         # print(data.text.strip().split()[0])
-                        table_value.append(data.text.strip().split()[0])
+                        object=own_routerinfo()
+                        own_routerId = object.routerId()
+                        table_value.append(own_routerId)
 
                 table_row = {table_key: table_value}
                 updated_data.update(table_row)
